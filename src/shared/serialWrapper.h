@@ -11,7 +11,7 @@ const bool USE_SERIAL = false;
 #endif
 
 namespace {
-const uint16_t T_HEARTBEAT = 10 * 1000L;
+const uint16_t T_HEARTBEAT = 10L * 1000;
 
 #ifdef SERIAL_LOGGING
 #pragma message("-- SERIAL_LOGGING set, enabling warning & errors logs --")
