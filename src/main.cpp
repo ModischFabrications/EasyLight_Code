@@ -17,10 +17,9 @@ void setup() {
 
     PersistenceManager::setup();
     RebootManager::setup();
-    Power::setup();
-    // buttons -> https://github.com/bxparks/AceButton/blob/develop/docs/resistor_ladder/README.md
-    // https://github.com/ModischFabrications/EasyLight_PCB#button-inputs
+    // TODO buttons
     Lights::setup();
+    Power::setup();
 
     println(F(".. Done!"));
     Lights::hello_world();
@@ -31,4 +30,5 @@ void loop() {
     PersistenceManager::loop();
     RebootManager::loop();
     Power::loop();
+    delay(1);
 }

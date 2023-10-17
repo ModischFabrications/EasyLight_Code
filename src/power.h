@@ -49,8 +49,10 @@ void callListeners(BatteryState new_state) {
 
 void setMode(BatteryState new_state) {
     if (new_state == state) return;
-
+    print(F("Battery state is now "));
+    printlnRaw((uint8_t)new_state);
     callListeners(new_state);
+    state = new_state;
 }
 
 uint16_t readVCCExternal() {
@@ -139,6 +141,7 @@ void setup(int8_t pinIfExternal = -1) {
     }
     battery_pin = pinIfExternal;
 
+    // this might not be stable yet, don't depend on it
     print(F("Initial power reading is "));
     printRaw(readVCC());
     println(F("mV"));

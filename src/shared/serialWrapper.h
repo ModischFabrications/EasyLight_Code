@@ -46,9 +46,9 @@ void heartbeatSerial() {
     uint32_t time = millis();
 
     if (time - lastMsg > T_HEARTBEAT) {
-        Serial.print(F("cycle time: ["));
+        Serial.print(F("avg cycle time: ~"));
         Serial.print(time - lastCycle);
-        Serial.println(F("]"));
+        Serial.println(F("ms"));
         lastMsg = time;
     }
 
