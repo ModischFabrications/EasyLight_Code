@@ -13,7 +13,7 @@ void setup() {
     Pinout::setup();
 
     setupSerial(115200);
-    println(F("Starting up, this should take less than 5s..."));
+    println(F("Initializing..."));
 
     PersistenceManager::setup();
     RebootManager::setup();
@@ -21,8 +21,9 @@ void setup() {
     Lights::setup();
     Power::setup();
 
-    println(F(".. Done!"));
+    println(F(".. Done!\nStarting IO tests..."));
     Lights::hello_world();
+    println(F(".. Done!"));
 }
 
 void loop() {
@@ -31,4 +32,7 @@ void loop() {
     RebootManager::loop();
     Power::loop();
     delay(1);
+
+    // TODO remove once testing is done!
+    Lights::hello_world();
 }

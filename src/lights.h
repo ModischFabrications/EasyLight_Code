@@ -19,22 +19,20 @@
 
 namespace Lights {
 namespace {
-const uint8_t BRIGHTNESS = 127;
+const uint8_t BRIGHTNESS = 255/8;
 const uint32_t CURRENT_LIMIT__MA = 500;
 
-const uint8_t N_LEDS = 5;
-
-const float SMOOTHING = 1.5;
+const uint8_t N_LEDS = 2;
 
 // https://funduino.de/nr-17-ws2812-neopixel
 // https://registry.platformio.org/libraries/adafruit/Adafruit%20NeoPixel
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(N_LEDS, Pinout::DATA_LEDS, NEO_GRBW + NEO_KHZ800);
 
-void colorWipe(uint32_t color, uint16_t wait) {
+void colorWipe(uint32_t color, uint16_t waitMs) {
     for (uint8_t i = 0; i < pixels.numPixels(); i++) {
         pixels.setPixelColor(i, color);
         pixels.show();
-        delay(wait);
+        delay(waitMs);
     }
 }
 
@@ -47,8 +45,8 @@ void clear() {
 
 void setup() {
     pixels.begin();
+    pixels.show();  // turn off asap to prevent blown fuse
     pixels.setBrightness(BRIGHTNESS);
-    clear();
 }
 
 void hello_world() {

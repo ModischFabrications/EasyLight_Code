@@ -42,7 +42,9 @@ uint8_t battery_pin = -1;
 void callListeners(BatteryState new_state) {
     for (uint8_t i = 0; i < i_listeners; i++) {
         fListener listener = listeners[i];
-        if (listener == nullptr) {logError(F("Invalid listener"));}
+        if (listener == nullptr) {
+            logError(F("Invalid listener"));
+        }
         (*listener)(new_state);
     }
 }

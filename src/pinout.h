@@ -26,7 +26,6 @@ void setup() {
 
     pinMode(IO_CHARGING, INPUT_PULLUP);
 
-    // managed by LEDs, but it doesn't hurt to set explicitly
     pinMode(DATA_LEDS, OUTPUT);
     pinMode(CLOCK_LEDS, OUTPUT);
 }
