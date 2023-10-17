@@ -3,7 +3,7 @@
 #include <Adafruit_NeoPixel.h>
 #include <Arduino.h>
 
-#include "pins.h"
+#include "pinout.h"
 
 /**
  * simulate using https://wokwi.com/arduino/libraries/FastLED
@@ -28,26 +28,21 @@ const float SMOOTHING = 1.5;
 
 // https://funduino.de/nr-17-ws2812-neopixel
 // https://registry.platformio.org/libraries/adafruit/Adafruit%20NeoPixel
-Adafruit_NeoPixel pixels = Adafruit_NeoPixel(N_LEDS, Pins::DATA_LEDS, NEO_GRBW + NEO_KHZ800);
+Adafruit_NeoPixel pixels = Adafruit_NeoPixel(N_LEDS, Pinout::DATA_LEDS, NEO_GRBW + NEO_KHZ800);
 
-void clear() {
-    pixels.clear();
-    pixels.show();
-}
-
-void colorWipe(uint32_t color, int wait) {
-    for (uint8_t i = 0; i < pixels.numPixels(); i++) { // For each pixel in strip...
-        pixels.setPixelColor(i, color);                //  Set pixel's color (in RAM)
-        pixels.show();                                 //  Update strip to match
-        delay(wait);                                   //  Pause for a moment
+void colorWipe(uint32_t color, uint16_t wait) {
+    for (uint8_t i = 0; i < pixels.numPixels(); i++) {
+        pixels.setPixelColor(i, color);
+        pixels.show();
+        delay(wait);
     }
 }
 
 } // namespace
 
-void turn_off() {
-    Serial.println(F("turning off"));
-    clear();
+void clear() {
+    pixels.clear();
+    pixels.show();
 }
 
 void setup() {

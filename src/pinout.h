@@ -8,7 +8,7 @@
  * https://circuits-diy.com/wp-content/uploads/2021/11/attiny85-pinout.jpg
  * */
 
-namespace Pins {
+namespace Pinout {
 
 // LOW is pressed, using buildin pullups
 const uint8_t BUTTONS = PB3;
