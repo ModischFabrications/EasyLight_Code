@@ -22,7 +22,7 @@ namespace {
 const uint8_t BRIGHTNESS = 255/16;
 const uint32_t CURRENT_LIMIT__MA = 500;
 
-const uint8_t N_LEDS = 2;
+const uint8_t N_LEDS = 5;
 
 // https://funduino.de/nr-17-ws2812-neopixel
 // https://registry.platformio.org/libraries/adafruit/Adafruit%20NeoPixel
@@ -51,7 +51,7 @@ void setup() {
 }
 
 void hello_world() {
-    const uint16_t durationMs = 200;
+    const uint16_t durationMs = 500;
     colorWipe(pixels.Color(255, 0, 0), durationMs);    // Red
     colorWipe(pixels.Color(0, 255, 0), durationMs);    // Green
     colorWipe(pixels.Color(0, 0, 255), durationMs);    // Blue

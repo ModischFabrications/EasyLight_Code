@@ -31,8 +31,8 @@ void loop() {
     PersistenceManager::loop();
     RebootManager::loop();
     Power::loop();
-    delay(1);
 
     // TODO remove once testing is done!
+    delay(1000);
     Lights::hello_world();
 }
