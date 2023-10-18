@@ -19,7 +19,7 @@
 
 namespace Lights {
 namespace {
-const uint8_t BRIGHTNESS = 255/8;
+const uint8_t BRIGHTNESS = 255/16;
 const uint32_t CURRENT_LIMIT__MA = 500;
 
 const uint8_t N_LEDS = 2;
@@ -28,11 +28,12 @@ const uint8_t N_LEDS = 2;
 // https://registry.platformio.org/libraries/adafruit/Adafruit%20NeoPixel
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(N_LEDS, Pinout::DATA_LEDS, NEO_GRBW + NEO_KHZ800);
 
+// set all LEDs to the same color with a slight delay inbetween
 void colorWipe(uint32_t color, uint16_t waitMs) {
     for (uint8_t i = 0; i < pixels.numPixels(); i++) {
         pixels.setPixelColor(i, color);
         pixels.show();
-        delay(waitMs);
+        delay(waitMs/pixels.numPixels());
     }
 }
 
@@ -50,10 +51,12 @@ void setup() {
 }
 
 void hello_world() {
-    colorWipe(pixels.Color(255, 0, 0), 100);    // Red
-    colorWipe(pixels.Color(0, 255, 0), 100);    // Green
-    colorWipe(pixels.Color(0, 0, 255), 100);    // Blue
-    colorWipe(pixels.Color(0, 0, 0, 255), 100); // True white (not RGB white)
+    const uint16_t durationMs = 200;
+    colorWipe(pixels.Color(255, 0, 0), durationMs);    // Red
+    colorWipe(pixels.Color(0, 255, 0), durationMs);    // Green
+    colorWipe(pixels.Color(0, 0, 255), durationMs);    // Blue
+    colorWipe(pixels.Color(255, 255, 255), durationMs); // Fake white
+    colorWipe(pixels.Color(0, 0, 0, 255), durationMs); // True white
     clear();
 }
 
