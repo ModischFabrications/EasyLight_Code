@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <time.h>
 
 #define DEBUG
 
@@ -10,10 +11,16 @@
 #include "shared/serialWrapper.h"
 
 void setup() {
+    delay(0); // reset watchdog timer (WDT)
+
     Pinout::setup();
 
     setupSerial(115200);
     println(F("Initializing..."));
+
+    const time_t unixBuildTime = LAST_BUILD_TIME;
+    print(F("Build date: "));
+    printlnRaw(ctime(&unixBuildTime));  // this formatting is not great, but easy
 
     PersistenceManager::setup();
     RebootManager::setup();
