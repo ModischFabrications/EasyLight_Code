@@ -71,22 +71,8 @@ void printlnRaw(const String& string) {
     Serial.println(string);
 }
 
-void printlnRaw(int16_t number) {
-    if (!USE_SERIAL) return;
-    Serial.println(number);
-}
-
-void printlnRaw(uint16_t number) {
-    if (!USE_SERIAL) return;
-    Serial.println(number);
-}
-
-void printlnRaw(uint8_t number) {
-    if (!USE_SERIAL) return;
-    Serial.println(number);
-}
-
-void printlnRaw(float number) {
+template <typename T>
+void printlnRaw(T number) {
     if (!USE_SERIAL) return;
     Serial.println(number);
 }
@@ -101,22 +87,8 @@ void printRaw(const String& string) {
     Serial.print(string);
 }
 
-void printRaw(int16_t number) {
-    if (!USE_SERIAL) return;
-    Serial.print(number);
-}
-
-void printRaw(uint16_t number) {
-    if (!USE_SERIAL) return;
-    Serial.print(number);
-}
-
-void printRaw(uint8_t number) {
-    if (!USE_SERIAL) return;
-    Serial.print(number);
-}
-
-void printRaw(float number) {
+template <typename T>
+void printRaw(T number) {
     if (!USE_SERIAL) return;
     Serial.print(number);
 }
