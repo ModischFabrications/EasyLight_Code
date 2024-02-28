@@ -1,8 +1,6 @@
 #include <Arduino.h>
 #include <time.h>
 
-#define DEBUG
-
 #include "lights.h"
 #include "pinout.h"
 #include "power.h"

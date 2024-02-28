@@ -11,7 +11,7 @@
 
 namespace Pinout {
 
-#ifdef DEBUG
+#ifdef NANO
 // LOW is pressed, using buildin pullups
 const uint8_t BUTTONS = A0;
 
@@ -21,7 +21,7 @@ const uint8_t IO_CHARGING = 12;
 // clock is optional, data can also be used to PWM
 const uint8_t DATA_LEDS = 9;
 const uint8_t CLOCK_LEDS = 10;
-#else
+#elif TINY
 const uint8_t BUTTONS = 3;
 const uint8_t IO_CHARGING = 4;
 const uint8_t DATA_LEDS = 1;
