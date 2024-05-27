@@ -12,7 +12,7 @@
 namespace Pinout {
 
 #ifdef NANO
-// LOW is pressed, using buildin pullups
+// parallel resistor ladder: 1k, 2.2k, 4.7k with pullup of 1k
 const uint8_t BUTTONS = A0;
 
 // low while charging, might be bypassed via LED
@@ -29,8 +29,8 @@ const uint8_t CLOCK_LEDS = 2;
 #endif
 
 void setup() {
-    // analog does not need a pinMode
-    // pinMode(BUTTONS, INPUT_PULLUP);
+    // analog does not need a pinMode, but doesn't want a pullup
+    pinMode(BUTTONS, INPUT);
 
     pinMode(IO_CHARGING, INPUT_PULLUP);
 

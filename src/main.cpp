@@ -4,6 +4,7 @@
 #include "lights.h"
 #include "pinout.h"
 #include "power.h"
+#include "buttons.h"
 #include "shared/persistence/persistenceManager.h"
 #include "shared/rebootManager.h"
 #include "shared/serialWrapper.h"
@@ -22,7 +23,7 @@ void setup() {
 
     PersistenceManager::setup();
     RebootManager::setup();
-    // TODO buttons
+    Buttons::setup();
     Lights::setup();
     Power::setup();
 
@@ -35,9 +36,10 @@ void loop() {
     heartbeatSerial();
     PersistenceManager::loop();
     RebootManager::loop();
+    Buttons::loop();
+    // Lights::loop();
     Power::loop();
 
-    // TODO remove once testing is done!
-    delay(1000);
-    Lights::hello_world();
+    delay(1);
+    // delay(200);
 }
