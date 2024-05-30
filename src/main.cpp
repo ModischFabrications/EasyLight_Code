@@ -5,6 +5,7 @@
 #include "pinout.h"
 #include "power.h"
 #include "buttons.h"
+#include "controller.h"
 #include "shared/persistence/persistenceManager.h"
 #include "shared/rebootManager.h"
 #include "shared/serialWrapper.h"
@@ -26,6 +27,7 @@ void setup() {
     Buttons::setup();
     Lights::setup();
     Power::setup();
+    Controller::setup();
 
     println(F(".. Done!\nStarting IO tests..."));
     Lights::hello_world();
@@ -39,6 +41,7 @@ void loop() {
     Buttons::loop();
     // Lights::loop();
     Power::loop();
+    Controller::loop();
 
     delay(1);
     // delay(200);
