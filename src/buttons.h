@@ -54,6 +54,9 @@ void handleEvent(AceButton* button, uint8_t eventType, uint8_t buttonState) {
     print(F("; buttonState: "));
     printlnRaw(buttonState);
 
+    // TODO all three buttons held for 5s: do factory reset
+
+    // we might want to pass decisions over. Brightness fade during hold etc...
     if (eventType != AceButton::kEventPressed && eventType != AceButton::kEventRepeatPressed) return;
 
     // using button refs would be nicer, but is not permitted
