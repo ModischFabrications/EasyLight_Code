@@ -33,7 +33,7 @@ const uint8_t N_LEDS = 5;
 Adafruit_NeoPixel px = Adafruit_NeoPixel(N_LEDS, Pinout::DATA_LEDS, NEO_GRBW + NEO_KHZ800);
 
 // set all LEDs to the same color with a slight delay inbetween
-// blocking; this is for debug use only!
+// blocking; debug use only!
 void colorWipe(uint32_t color, uint16_t waitMs) {
     for (uint8_t i = 0; i < px.numPixels(); i++) {
         px.setPixelColor(i, color);

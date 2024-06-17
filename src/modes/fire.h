@@ -4,7 +4,7 @@
 #include "shared/serialWrapper.h"
 #include <Arduino.h>
 
-namespace Modes_Fire {
+namespace State_Fire {
 namespace {
 
 const uint16_t UPDATE_DELAY = 500;
@@ -17,7 +17,9 @@ void updateScreen() {
 
 } // namespace
 
-void reset() { updateScreen(); }
+void reset() {
+    // TODO extinguish and start over
+}
 
 void setup() {}
 
@@ -29,8 +31,6 @@ void loop() {
     updateScreen();
 }
 
-void next() {
-    // TODO no clue, maybe intensity?
-}
+void trigger() { reset(); }
 
-} // namespace Modes_Fire
+} // namespace State_Fire

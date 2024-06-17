@@ -4,6 +4,7 @@
 #include <Arduino.h>
 using namespace ace_button;
 
+#include "controller.h"
 #include "pinout.h"
 #include "shared/serialWrapper.h"
 
@@ -22,18 +23,19 @@ const uint8_t UPDATE_DELAY = 5;
 // TODO cleanup static's
 static const uint8_t N_BUTTONS = 4;
 static AceButton B_Brightness(nullptr, 0);
-AceButton B_Mode(nullptr, 1);
-AceButton B_Settings(nullptr, 2);
+AceButton B_State(nullptr, 1);
+AceButton B_Trigger(nullptr, 2);
 AceButton B_None(nullptr, 3);
 static AceButton* const BUTTONS[N_BUTTONS] = {
     &B_Brightness,
-    &B_Mode,
-    &B_Settings,
+    &B_State,
+    &B_Trigger,
     &B_None,
 };
 
 static const uint8_t N_LEVELS = N_BUTTONS + 1;
 static const uint16_t LEVELS[N_LEVELS] = {
+    // I have no clue why, but these values seem to work great
     0,    // short to ground
     91,   // 1k
     183,  // 2.2k
@@ -52,7 +54,22 @@ void handleEvent(AceButton* button, uint8_t eventType, uint8_t buttonState) {
     print(F("; buttonState: "));
     printlnRaw(buttonState);
 
-    // TODO actually use these infos for something useful
+    if (eventType != AceButton::kEventPressed && eventType != AceButton::kEventRepeatPressed) return;
+
+    // using button refs would be nicer, but is not permitted
+    // no idea why this starts at 1 when I defined it with 0, but it works
+    switch (button->getPin()) {
+    case 1:
+        Controller::nextBrightness();
+        break;
+    case 2:
+        Controller::nextState();
+        break;
+    case 3:
+        Controller::trigger();
+    default:
+        break;
+    }
 }
 
 } // namespace

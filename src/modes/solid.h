@@ -4,7 +4,7 @@
 #include "shared/serialWrapper.h"
 #include <Arduino.h>
 
-namespace Modes_Solid {
+namespace State_Solid {
 namespace {
 
 uint8_t i = 0;
@@ -20,15 +20,20 @@ uint8_t N_COLORS = sizeof(Colors) / sizeof(Colors[0]);
 
 } // namespace
 
-void reset() { Lights::fill(Colors[i]); }
+void reset() {
+    Lights::fill(Colors[i]);
+    // I know this seems useless, but converting back is harder
+    print(F("Solid: Color "));
+    printlnRaw(Colors[i]);
+}
 
 void setup() {}
 
 void loop() {}
 
-void next() {
+void trigger() {
     if (++i >= N_COLORS) i = 0;
     reset();
 }
 
-} // namespace Modes_Solid
+} // namespace State_Solid

@@ -44,5 +44,4 @@ void loop() {
     Controller::loop();
 
     delay(1);
-    // delay(200);
 }

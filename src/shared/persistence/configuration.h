@@ -13,15 +13,14 @@ const uint8_t VERSION = 1;
 
 struct Configuration {
     uint8_t i_brightness;
-    uint8_t i_mode;
-    uint8_t i_param;
+    uint8_t i_state;
+    // uint8_t i_param;
 
     const bool operator==(const Configuration& other) {
-        return (this->i_mode == other.i_mode && this->i_brightness == other.i_brightness &&
-                this->i_param == other.i_param);
+        return (this->i_brightness == other.i_brightness && this->i_state == other.i_state);
     }
 };
 
-const Configuration defaultConfiguration = {0, 255 / 16};
+const Configuration defaultConfiguration = {0, 0};
 
 } // namespace Config

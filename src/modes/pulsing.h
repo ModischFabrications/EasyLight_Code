@@ -4,7 +4,7 @@
 #include "shared/serialWrapper.h"
 #include <Arduino.h>
 
-namespace Modes_Pulsing {
+namespace State_Pulsing {
 namespace {
 
 const uint16_t UPDATE_DELAY = 10;
@@ -46,9 +46,9 @@ void loop() {
     updateScreen();
 }
 
-void next() {
+void trigger() {
     if (++i >= N_GROUPS) i = 0;
     reset();
 }
 
-} // namespace Modes_Pulsing
+} // namespace State_Pulsing
