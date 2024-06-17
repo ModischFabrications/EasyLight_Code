@@ -27,6 +27,7 @@ uint8_t N_GROUPS = sizeof(Groups) / sizeof(Groups[0]);
 
 void updateScreen() {
     // TODO animate, check Neopixel lib for wheel and similar mixing
+    // https://learn.adafruit.com/multi-tasking-the-arduino-part-3/using-neopatterns
     Lights::fill(Groups[i].from_color);
 }
 

@@ -76,4 +76,7 @@ void fill(uint32_t color) {
     Lights::px.show();
 }
 
+// low level access for more complex interactions, this should be used carefully
+Adafruit_NeoPixel* getPixels() { return &px; }
+
 } // namespace Lights

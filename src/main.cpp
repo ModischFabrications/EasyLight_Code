@@ -12,6 +12,7 @@
 
 void setup() {
     delay(0); // reset watchdog timer (WDT)
+    randomSeed(0);
 
     Pinout::setup();
 
